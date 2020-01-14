@@ -6,7 +6,7 @@
  * @see       https://github.com/MR-0/Bokken/ Bokken
  *
  * @author    Mario Rojas (MR0) <contact@mr0.cl>
- * @copyright 2019 Mario Rojas
+ * @copyright 2020 Mario Rojas
  * @license   https://raw.githubusercontent.com/MR-0/Bokken/master/LICENSE MIT License
  */
 
@@ -39,6 +39,7 @@ class Bokken {
     require __DIR__.'/assets/request.php';
     require __DIR__.'/assets/router.php';
     require __DIR__.'/assets/presets.php';
+    require __DIR__.'/assets/defaults.php';
 
   }
 }
