@@ -19,35 +19,31 @@ createBokkenDefaultFile('views/cache');
 
 // FILES
 createBokkenDefaultFile('.htaccess',
-"
-RewriteEngine on
+"RewriteEngine on
 
 RewriteRule ^public/.+$ - [L,END]
 RewriteRule ^index\.php$ - [L,END]
 RewriteRule ^(.+)$ public/$1
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . index.php
-"
+RewriteRule . index.php"
 );
 
 if (!file_exists(BOKKEN_PATH.'/controllers/defaults.php')) {
   createBokkenDefaultFile('index.php',
   file_get_contents(BOKKEN_PATH.'/index.php').
-  "
+"
 
 // ======== BOKKEN AUTO GENERATED CONTENT ========
 // session_start();
 // DataBase::open( 'host', 'user', 'pass', 'table' );
 require __DIR__.'/router.php';
-// DataBase::close();
-  ",
+// DataBase::close();",
   true);
 }
 
 createBokkenDefaultFile('controllers/defaults.php',
-"
-<?php
+"<?php
 return array(
   'site' => array(
     'title'     => 'Title',
@@ -61,13 +57,11 @@ return array(
       'image'       => 'assets/images/social.png'
     )
   )
-);
-"
+);"
 );
 
 createBokkenDefaultFile('router.php',
-"
-<?php
+"<?php
 Router::init();
 
 Router::asset('/*', 'assets/style.less', 'assets/style.min.css');
@@ -75,24 +69,20 @@ Router::asset('/*', 'assets/script.js', 'assets/script.min.js');
 
 Router::get('/', 'home');
 
-Router::end();
-"
+Router::end();"
 );
 
 createBokkenDefaultFile('controllers/home.php',
-"
-<?php
+"<?php
 return array(
   'welcome' => array(
-    'message' => 'Welcome to <b>Booken</b><br>You can edit these content in <em>controllers/home.php</em> and <em>views/home.php</em>'
+    'message' => '<p>Welcome to <b>Booken</b> a minimal PHP MVC<br>You can edit the contet of these page in: <em>controllers/home.php</em> and <em>views/home.php</em>.'
   )
-);
-"
+);"
 );
 
 createBokkenDefaultFile('views/index.php',
-"
-<!DOCTYPE html>
+"<!DOCTYPE html>
 <html lang=\"{{site.lang}}\">
 <head>{{>head}}</head>
 <body>
@@ -101,26 +91,22 @@ createBokkenDefaultFile('views/index.php',
 <script src=\"{{url.base}}{{file}}?t={{time}}\"></script>
 {{/assets.scripts}}
 </body>
-</html>
-"
+</html>"
 );
 
 createBokkenDefaultFile('views/home.php',
-"
-{{>header}}
+"{{>header}}
 <main>
-  <div class=\"container-sm\">
-    <h1 class=\"text-center\">Bokken</h1>
-    <p class=\"text-center\">{{welcome.message}}</p>
+  <div class=\"container-sm mar-lg\">
+    <h1 class=\"text-center mar-md\">Bokken</h1>
+    <div class=\"text-center\">{{welcome.message}}</div>
   </div>
 </main>
-{{>footer}}
-"
+{{>footer}}"
 );
 
 createBokkenDefaultFile('views/partials/head.php',
-"
-<meta charset=\"{{site.char}}\">
+"<meta charset=\"{{site.char}}\">
 <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, user-scalable=no\">
 <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">
 <title>{{site.title}}</title>
@@ -138,20 +124,15 @@ createBokkenDefaultFile('views/partials/head.php',
 
 {{#assets.styles}}
 <link rel=\"stylesheet\" href=\"{{url.base}}{{file}}?t={{time}}\" type=\"text/css\">
-{{/assets.styles}}
-"
+{{/assets.styles}}"
 );
 
 createBokkenDefaultFile('views/partials/header.php',
-"
-<header></header>
-"
+"<header></header>"
 );
 
 createBokkenDefaultFile('views/partials/footer.php',
-"
-<footer></footer>
-"
+"<footer></footer>"
 );
 
 if (!file_exists(BOKKEN_PATH.'/assets/style.less')) {
@@ -161,8 +142,7 @@ if (!file_exists(BOKKEN_PATH.'/assets/style.less')) {
 }
 
 createBokkenDefaultFile('assets/style.less',
-"
-@import './styles/elementary.less';
+"@import './styles/elementary.less';
 "
 );
 
@@ -173,8 +153,7 @@ if (!file_exists(BOKKEN_PATH.'/aassets/script.js')) {
 }
 
 createBokkenDefaultFile('assets/script.js',
-"
-require('./scripts/elementary.js');
+"require('./scripts/elementary.js');
 "
 );
 
