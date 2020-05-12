@@ -44,3 +44,13 @@ function pre_print_r ($data) {
 function print_log ($data) {
 	error_log(print_r($data, true));
 }
+
+function get_post_data ($fields) {
+	$data = array();
+	
+	foreach ($fields as $k) {
+		$data[$k] = isset($_POST[$k]) ? $_POST[$k] : null;
+	}
+
+	return (object) $data;
+}

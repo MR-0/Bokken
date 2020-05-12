@@ -11,7 +11,7 @@ createBokkenDefaultFile('public');
 createBokkenDefaultFile('public/assets');
 createBokkenDefaultFile('public/assets/media');
 createBokkenDefaultFile('public/media');
-createBokkenDefaultFile('services');
+createBokkenDefaultFile('helpers');
 createBokkenDefaultFile('vendors');
 createBokkenDefaultFile('views');
 createBokkenDefaultFile('views/partials');
@@ -35,9 +35,22 @@ if (!file_exists(BOKKEN_PATH.'/controllers/defaults.php')) {
 "
 
 // ======== BOKKEN AUTO GENERATED CONTENT ========
+
+/* DEFINITIONS */
+// define('GLOBALS_DEFINITIONS', 'NOTHING');
+
+/* SESSION */
+// ini_set('session.gc_maxlifetime', 30*24*60*60);
+// ini_set('session.cookie_lifetime', 30*24*60*60);
 // session_start();
+
+/* DATABASE: OPEN */
 // DataBase::open( 'host', 'user', 'pass', 'table' );
+
+/* ROUTES */
 require __DIR__.'/router.php';
+
+/* DATABASE: CLOSE */
 // DataBase::close();",
   true);
 }

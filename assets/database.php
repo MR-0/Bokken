@@ -73,6 +73,26 @@ class DataBase {
 		$query = self::$connection->query("SELECT COUNT(1) FROM $table");
 		return $query ? $query->fetch_row()[0] : null;
 	}
+
+	public static function current () {
+		return self::$connection->insert_id;
+	}
+
+	public static function delete ($table, $data = null, $type = 'AND') {
+		$table = self::scape($table);
+		$cols = 1;
+		
+		if ($data) {
+			$data = self::scapeArray($data);
+			$cols = array();
+			foreach ($data as $key => $value) {
+				$cols[] = "$key = '$value'";
+			}
+			$cols = implode(" $type ", $cols);
+		}
+		
+		return self::$connection->query("DELETE FROM $table WHERE $cols");
+	}
 	
 	public static function update ($table, $data) {
 		$table = self::scape($table);
