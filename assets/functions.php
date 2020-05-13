@@ -54,3 +54,14 @@ function get_post_data ($fields) {
 
 	return (object) $data;
 }
+
+function get_post_data_strict ($fields) {
+	$all = true;
+	$data = get_post_data($fields);
+	
+	foreach ($data as $d) {
+		$all = $all && !is_null($d);
+	}
+
+	return $all ? $data : null;
+}
